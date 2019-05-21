@@ -15,6 +15,7 @@ me for example:<br>
 C:\Program Files (x86)\Google\Chrome\Application <br>
 C:\Users\Shinelon\AppData\Local\Programs\Python\Python37 <br>
 ### 3. run the code <br>
-> $ python spider.py --key_word=husky --number=50 --dst_dir=./sample/husky --save_name=husky <br>
-here are the samples: <br>
-![avatar](./preview.png)
+> $ python spider.py --key_word=husky --number=50 --dst_dir=./sample/husky --save_name=husky
+
+here are the samples(already deleted the bad images): <br>
+![preview](./preview.png)
