@@ -20,7 +20,7 @@ def spider(url, number ,dst_dir, save_name):
     dst_list = os.listdir(dst_dir)    
     i = len(dst_list)  
     if(i>number):
-        print("库存已满")
+        print("current number of images is beyond the need")
         return
     driver.get(url)
     first_pic = driver.find_element_by_class_name("imgitem").click()
@@ -31,21 +31,21 @@ def spider(url, number ,dst_dir, save_name):
         try:
             pic = driver.find_element_by_class_name("currentImg").get_attribute("src")
         except Exception as err:
-            print("网站提供图片数量已达上限\n")
+            print("cannot get any more images from the current website\n")
             break
         try: 
             r = requests.get(pic, timeout=5)
         except Exception as err:
-            print("下载失败: \n%s"%(err))
+            print("download failed: \n%s"%(err))
             continue
         with open(dst_dir+'/%s_%04d.jpg'%(save_name,i), 'wb') as f:
             f.write(r.content)        
-            print("已下载第%d张图片: %s"%(i,pic))    
+            print("downloaded %d images already: %s"%(i,pic))    
         next_page = driver.find_element_by_class_name("img-next").click()
         time.sleep(3)   
         driver.switch_to.window(driver.window_handles[1])
     driver.quit()
-    print("\n下载完毕 >>")
+    print("\n download accomplished >>")
     
     
 parser = argparse.ArgumentParser(description='Image Spider')
